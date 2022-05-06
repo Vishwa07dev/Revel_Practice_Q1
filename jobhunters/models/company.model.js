@@ -12,7 +12,8 @@ const companySchema = new mongoose.Schema({
         required : true
     },
     address : {
-        type : String
+        type : String,
+        required : true
     },
     createdAt : {
         type : Date,
