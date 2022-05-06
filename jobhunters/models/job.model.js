@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const constants = require("../utils/constants");
 
-const companySchema = new mongoose.Schema({
+const jobSchema = new mongoose.Schema({
 
     /**
      * title, description, status, students, companyId createdAt , updatedAt
@@ -43,4 +43,4 @@ const companySchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("Job", userSchema);
+module.exports = mongoose.model("Job", jobSchema);
