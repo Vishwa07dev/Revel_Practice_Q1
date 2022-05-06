@@ -6,8 +6,6 @@ const userSchema = new mongoose.Schema({
 
     /**
      * name, userId, password, email, createdAt , updatedAt
-     * userType [ ADMIN | ENGINEER | CUSTOMER ] , 
-     * userStatus [ Pending | Approved | Rejected ]
      */
     name : {
         type : String,
@@ -30,7 +28,7 @@ const userSchema = new mongoose.Schema({
     userType : {
         type : String,
         required : true,
-        default : "CUSTOMER"
+        default : "STUDENT"
     },
     createdAt : {
         type : Date,
