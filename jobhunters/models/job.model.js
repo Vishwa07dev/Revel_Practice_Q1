@@ -5,7 +5,7 @@ const constants = require("../utils/constants");
 const companySchema = new mongoose.Schema({
 
     /**
-     * title, description, password, email, createdAt , updatedAt
+     * title, description, status, students, companyId createdAt , updatedAt
      */
     title : {
         type : String,
