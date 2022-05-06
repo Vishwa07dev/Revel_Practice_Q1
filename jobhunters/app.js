@@ -15,7 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
     console.log("MongoDB connected");
 })
 
-
 /**
  * Start the express server
  */
