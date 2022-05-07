@@ -11,8 +11,6 @@
  * 
  *   Search  GET /jobhunter/ap/v1/companies
  *           GET /jobhunter/ap/v1/companies/{id}
- * 
- * 
- * 
+
  *  Create a new branch called as company and raise PR to main branch
  */
