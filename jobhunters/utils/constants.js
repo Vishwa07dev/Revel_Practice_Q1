@@ -15,5 +15,6 @@
         student : "STUDENT",
         admin : "ADMIN",
         recruiter : "RECRUITER"
-    }
+    },
+    secret_key: "TOP_SECRET!"
 };
