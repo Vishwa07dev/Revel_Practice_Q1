@@ -23,9 +23,7 @@ Mongoose.connect(DB_URL, (err) => {
   return console.log("Connection successful");
 });
 
-app.get("/", (req, res) => {
-  return res.status(200).send({ requestBody: req.body });
-});
+require("./routes").userRoutes(app);
 
 module.exports = app.listen(appPort, () => {
   console.log(`app has been started on port number ${appPort}`);
