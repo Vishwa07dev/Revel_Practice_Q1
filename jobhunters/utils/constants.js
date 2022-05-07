@@ -10,5 +10,10 @@
     jobStatus: {
         active: "ACTIVE",
         expired: "EXPIRED"
+    },
+    userType : {
+        student : "STUDENT",
+        admin : "ADMIN",
+        recruiter : "RECRUITER"
     }
 };
