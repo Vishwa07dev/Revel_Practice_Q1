@@ -1,3 +1,5 @@
+const Bcrypt = require("bcryptjs");
+
 exports.userType = {
   candidate: "CANDIDATE",
   admin: "ADMIN",
@@ -20,6 +22,14 @@ exports.httpCodes = {
   badRequest: 400,
   forbidden: 403,
   unAuthorized: 401,
+};
+
+exports.rootAdmin = {
+  name: "Root administrator",
+  userId: "admin",
+  password: Bcrypt.hashSync("root", 8),
+  email: "admin.root@jobhunters.com",
+  userType: this.userType.admin,
 };
 
 //---------------------------------
