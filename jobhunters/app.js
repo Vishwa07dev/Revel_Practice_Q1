@@ -11,6 +11,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+require("./routes")(app);
+
 /**
  * Setup the mongodb connection and create on ADMIN user
  */
@@ -21,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
     await User.collection.drop();// Since this a dev setup
     
-    if(user == null){
+    // if(user == null){
         user = await User.create({
             name : "Vishwa Mohan",
             userId : "admin",
@@ -30,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
             userType :  constant.userType.admin   
         });
         console.log("admin created", user);
-    }
+    // }
     
 })
 
