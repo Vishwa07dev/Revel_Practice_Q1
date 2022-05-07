@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 const constants = require('../utils/constants');
 
 
-
+   
 
 exports.signup = async (req, res) => {
     const userObj = {

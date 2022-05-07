@@ -3,7 +3,7 @@ const serverConfig = require('./configs/server.config');
 const mongoose = require('mongoose');
 const dbConfig = require('./configs/db.config');
 const bodyParser = require('body-parser');
-
+  
 
 const app = express();
 app.use(bodyParser.json());

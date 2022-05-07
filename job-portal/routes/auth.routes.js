@@ -11,4 +11,4 @@ module.exports = (app)=>{
     // signin
     app.post("/jobhunt/api/v1/auth/signin", authController.signin);
 
-}
+}  
