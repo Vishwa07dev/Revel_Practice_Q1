@@ -1,5 +1,8 @@
 
 const authRoutes = require("./auth.routes");
-module.exports = (app)=>{
+const companyRoutes = require("./company.routes");
+
+module.exports = (app) => {
     authRoutes(app);
+    companyRoutes(app);
 }

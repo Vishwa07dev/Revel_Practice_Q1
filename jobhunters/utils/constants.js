@@ -11,7 +11,7 @@
         active: "ACTIVE",
         expired: "EXPIRED"
     },
-    userType : {
+    userTypes : {
         student : "STUDENT",
         admin : "ADMIN",
         recruiter : "RECRUITER"
