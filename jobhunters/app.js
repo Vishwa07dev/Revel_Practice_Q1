@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     await User.collection.drop();// Since this a dev setup
     
 
+   // if(user == null){
     const user = await User.create({
         name : "Vishwa Mohan",
         userId : "admin",
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         userType :  constant.userType.admin   
     });
     console.log("admin created", user);
+// }
     
 });
 
