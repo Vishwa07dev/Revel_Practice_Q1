@@ -2,10 +2,24 @@
   "name": "jobhunters",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiddanthN/Revel_Practice_Q1.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiddanthN/Revel_Practice_Q1/issues"
+  },
+  "homepage": "https://github.com/SiddanthN/Revel_Practice_Q1#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.2"
+  }
 }
