@@ -14,14 +14,14 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    
+
     description: {
         type: String,
         required: true
     },
-    status:{
-        type:String,
-        default: constants.jobStatus.active
+    status: {
+        type: String,
+        default: constants.jobStatus.active     // ACTIVE  | EXPIRED
     },
     createdAt: {
         type: Date,
@@ -35,7 +35,15 @@ const jobSchema = new mongoose.Schema({
         default: () => {
             return Date.now()
         }
+    },
+    company: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "company"
+    },
+    students: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "User"
     }
 })
 
-module.exports = mongoose.model('Job',jobSchema)
+module.exports = mongoose.model('Job', jobSchema)

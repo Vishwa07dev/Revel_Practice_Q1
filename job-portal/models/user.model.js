@@ -44,7 +44,11 @@ const userSchema = new mongoose.Schema({
         default: () => {
             return Date.now()
         }
+    },
+    jobsApplied: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Job"
     }
 })
 
-module.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('User', userSchema)

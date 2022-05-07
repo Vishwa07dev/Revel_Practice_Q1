@@ -37,6 +37,10 @@ const companySchema = new mongoose.Schema({
         default: () => {
             return Date.now()
         }
+    },
+    jobsPosted:{
+        type:[mongoose.SchemaTypes.ObjectId],
+        ref: "Job"
     }
 })
 
