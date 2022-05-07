@@ -19,6 +19,7 @@ const userSchema = new Mongoose.Schema({
   },
   email: {
     type: String,
+    required: true,
   },
   userType: {
     type: String,
@@ -26,6 +27,7 @@ const userSchema = new Mongoose.Schema({
     default: userType.candidate,
   },
   /**
+  console.log(userRole);
    * Why use "userStatus" field ?
    * Since there will be multiple admin users in the site who will be having privileged access, so after the admin is signed up, then he or she
    * must be approved by other responsible admin to be able to login

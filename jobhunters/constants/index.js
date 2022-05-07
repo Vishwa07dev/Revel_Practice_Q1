@@ -14,6 +14,14 @@ exports.jobStatus = {
   expired: "EXPIRED",
 };
 
+exports.httpCodes = {
+  success: 200,
+  internalServerError: 500,
+  badRequest: 400,
+  forbidden: 403,
+  unAuthorized: 401,
+};
+
 //---------------------------------
 // All enum exports ----
 

@@ -1,7 +1,10 @@
+// Controller requirements
+const User = require("../../../controllers/auth.controller");
+
+// Middleware requirements
+const { validate } = require("../../../middlewares");
+
 module.exports = (app) => {
-  app.post("/api/v1/users/", (req, res) => {
-    res.status(200).send({
-      message: "Create a new user",
-    });
-  });
+  app.post("/jobhunters/api/v1/users/:role", [validate.signUp], User.signUp);
+  app.post("/jobhunters/api/v1/users/", [validate.signUp], User.signUp);
 };
