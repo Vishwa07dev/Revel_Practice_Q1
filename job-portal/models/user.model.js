@@ -6,7 +6,7 @@ const constanst = require('../utils/constants');
 
 
 
-
+  
 
 const userSchema = new mongoose.Schema({
     name: {
