@@ -7,6 +7,7 @@ const User = require("./models/user.model");
 const bcrypt = require("bcryptjs");
 const constant = require("./utils/constants");
 
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,18 +22,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
     await User.collection.drop();// Since this a dev setup
     
-    if(user == null){
-        user = await User.create({
-            name : "Vishwa Mohan",
-            userId : "admin",
-            password : bcrypt.hashSync("Welcome1",8),
-            email : "kankvish@gmail.com",
-            userType :  constant.userType.admin   
-        });
-        console.log("admin created", user);
-    }
+
+    const user = await User.create({
+        name : "Vishwa Mohan",
+        userId : "admin",
+        password : bcrypt.hashSync("Welcome1",8),
+        email : "kankvish@gmail.com",
+        userType :  constant.userType.admin   
+    });
+    console.log("admin created", user);
     
-})
+});
+
+require('./routes/auth.routes')(app);
+
+
 
 /**
  * Start the express server
