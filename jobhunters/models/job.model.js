@@ -5,7 +5,7 @@ const constants = require("../utils/constants");
 const jobSchema = new mongoose.Schema({
 
     /**
-     * title, description, status, students, companyId createdAt , updatedAt
+     * title, description, status, students, companyId, createdAt , updatedAt
      */
     title : {
         type : String,
