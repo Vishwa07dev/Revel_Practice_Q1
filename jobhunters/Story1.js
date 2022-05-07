@@ -43,6 +43,24 @@
  * 
  * 
  * 
+ *  git remote add upstream https://github.com/Vishwa07dev/Revel_Practice_Q1.git
+ * 
+ * 
+ *  git fetch upstream
+ * 
+ *  git checkout -b auth upstream/main
+ *  git pull upstream main
+ * 
+ *  //Make changes
+ * 
+ *  git add .
+ *  git commimt -m "auth APIs"
+ *   
+ *  git push -u origin auth
+ * 
+ *  //From Github raise the PR again the branch main of Vishwa
+ * 
+ * 
  * 
  * 
  * 
