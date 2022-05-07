@@ -14,29 +14,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**
  * Setup the mongodb connection and create on ADMIN user
  */
- mongoose.connect(dbConfig.DB_URL, async() => {
-    console.log("MongoDB connected");
-    
+mongoose.connect(dbConfig.DB_URL, async () => {
+  console.log("MongoDB connected");
 
+  await User.collection.drop(); // Since this a dev setup
 
-    await User.collection.drop();// Since this a dev setup
-    
-    if(user == null){
-        user = await User.create({
-            name : "Vishwa Mohan",
-            userId : "admin",
-            password : bcrypt.hashSync("Welcome1",8),
-            email : "kankvish@gmail.com",
-            userType :  constant.userType.admin   
-        });
-        console.log("admin created", user);
-    }
-    
-})
+  if (user == null) {
+    user = await User.create({
+      name: "Vishwa Mohan",
+      userId: "admin",
+      password: bcrypt.hashSync("Welcome1", 8),
+      email: "kankvish@gmail.com",
+      userType: constant.userType.admin,
+    });
+    console.log("admin created", user);
+  }
+});
+
+require("./routes/user.routes")(app);
 
 /**
  * Start the express server
  */
- app.listen(serverConfig.PORT, () => {
-    console.log("Application has started on the port ", serverConfig.PORT);
-})
+app.listen(serverConfig.PORT, () => {
+  console.log("Application has started on the port ", serverConfig.PORT);
+});
