@@ -1,5 +1,8 @@
 const Mongoose = require("mongoose");
 
+// Constants requirements
+const { userType, userStatus } = require("../constants");
+
 const userSchema = new Mongoose.Schema({
   name: {
     type: String,
@@ -20,7 +23,7 @@ const userSchema = new Mongoose.Schema({
   userType: {
     type: String,
     required: true,
-    default: "CANDIDATE",
+    default: userType.candidate,
   },
   /**
    * Why use "userStatus" field ?
@@ -30,7 +33,7 @@ const userSchema = new Mongoose.Schema({
   userStatus: {
     type: String,
     required: true,
-    default: "APPROVED",
+    default: userStatus.approved,
   },
   jobsApplied: {
     type: [Mongoose.SchemaTypes.ObjectId],

@@ -1,5 +1,8 @@
 const Mongoose = require("mongoose");
 
+// Constants requirements
+const { jobStatus } = require("../constants");
+
 const jobSchema = new Mongoose.Schema({
   title: {
     type: String,
@@ -12,7 +15,7 @@ const jobSchema = new Mongoose.Schema({
   status: {
     type: String,
     required: true,
-    default: "ACTIVE",
+    default: jobStatus.active,
   },
   candidatesApplied: {
     type: [Mongoose.SchemaTypes.ObjectId],
