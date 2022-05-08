@@ -58,7 +58,7 @@ isAdmin = async (req,res, next) =>{
      * Check what is the user type
      */
 
-    if(user && user.userType == constants.userType.admin){
+    if(user && user.userType == constants.userType.admin && user.userType == constants.userType.recruiter){
         next();
     }else{
         res.status(403).send({
