@@ -10,10 +10,12 @@ const e = require("express");
 
 exports.createJob = async (req, res) => {
 
+    const user =  await User.findOne({userId : req.userId});
+
     const jobObj = {
         title: req.body.title,
         description: req.body.description,
-        companyId: req.userId,
+        companyId: user._id,
         students: []
     }
 
