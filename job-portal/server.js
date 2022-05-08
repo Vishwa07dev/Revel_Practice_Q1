@@ -17,6 +17,7 @@ mongoose.connect(dbConfig.DB_URL, ()=>{
 
 
 require("./routes/auth.routes")(app);
+require("./routes/company.routes")(app);
 
 
 app.listen(serverConfig.PORT, ()=>{

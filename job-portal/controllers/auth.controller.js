@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 const constants = require('../utils/constants');
 
 
-   
+
 
 exports.signup = async (req, res) => {
     const userObj = {
@@ -13,19 +13,21 @@ exports.signup = async (req, res) => {
         email: req.body.email
     }
 
-    const userCreationResponse = {
-        name: userCreated.name,
-        userId: userCreated.userId,
-        email: userCreated.email,
-        userType: userCreated.userType,
-        jobsApplied: userCreated.jobsApplied,
-        createdAt: userCreated.createdAt,
-        updatedAt: userCreated.updatedAt
-    }
+
 
     try {
         const userCreated = await User.create(userObj);
         console.log("User created ", userCreated);
+
+        const userCreationResponse = {
+            name: userCreated.name,
+            userId: userCreated.userId,
+            email: userCreated.email,
+            userType: userCreated.userType,
+            jobsApplied: userCreated.jobsApplied,
+            createdAt: userCreated.createdAt,
+            updatedAt: userCreated.updatedAt
+        }
 
         res.status(201).send(userCreationResponse);
     } catch (err) {
@@ -39,12 +41,12 @@ exports.signup = async (req, res) => {
 
 
 exports.signin = async (req, res) => {
-    try{
+    try {
         var user = await User.findOne({ userId: req.body.userId });
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
-    if(user == null){
+    if (user == null) {
         return res.status(400).send({
             message: "User doesn't exit"
         })

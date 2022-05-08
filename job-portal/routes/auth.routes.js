@@ -1,5 +1,5 @@
 const authController = require("../controllers/auth.controller");
-
+const companyController = require("../controllers/company.controller");
 
 
 
@@ -10,5 +10,7 @@ module.exports = (app)=>{
 
     // signin
     app.post("/jobhunt/api/v1/auth/signin", authController.signin);
+
+    
 
 }  

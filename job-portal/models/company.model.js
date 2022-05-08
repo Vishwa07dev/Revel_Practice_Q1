@@ -19,7 +19,8 @@ const companySchema = new mongoose.Schema({
         unique: true
     },
     address: {
-        type: String
+        type: String,
+        required: true
     },
     verificationStatus:{
         type: String,
