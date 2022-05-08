@@ -79,7 +79,6 @@ exports.updateJob = async (req, res) => {
         if(user.userType == constants.userType.student){
             return applyJob(req, res, job, user);
         }else{
-            console.log(err.message);
             return res.status(401).send({
                 message: "Requires STUDENT Role"
             })
@@ -107,7 +106,7 @@ exports.updateJob = async (req, res) => {
 
 let applyJob = async (req, res, job, user)=>{
     try {
-        job.students.push(req.userId);
+        job.students.push(user._id);
         const updatedJob = await job.save();
 
         user.jobs.push(job._id);
