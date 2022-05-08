@@ -7,30 +7,30 @@ const jobSchema = new mongoose.Schema({
     /**
      * title, description, status, students, companyId, createdAt , updatedAt
      */
-    title : {
-        type : String,
-        required : true
+    title: {
+        type: String,
+        required: true
     },
-    description : {
-        type : String,
-        required : true
+    description: {
+        type: String,
+        required: true
     },
-    createdAt : {
-        type : Date,
-        immutable : true,
-        default : ()=>{
+    createdAt: {
+        type: Date,
+        immutable: true,
+        default: () => {
             return Date.now();
         }
     },
-    updatedAt : {
-        type : Date,
-        default : ()=>{
+    updatedAt: {
+        type: Date,
+        default: () => {
             return Date.now();
         }
     },
-    status : {
-        type : String,
-        default : constants.jobStatus.active
+    status: {
+        type: String,
+        default: constants.jobStatus.active
     },
     students: {
         type: [mongoose.SchemaTypes.ObjectId],
@@ -39,7 +39,7 @@ const jobSchema = new mongoose.Schema({
     companyId: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Company"
-    }   
+    }
 
 });
 
