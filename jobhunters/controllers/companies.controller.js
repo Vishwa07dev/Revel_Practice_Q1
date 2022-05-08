@@ -12,8 +12,8 @@ exports.addCompany = async (req, res) => {
     //logic to create the ticket
 
     const companyObj = {
-        name: req.body.title,
-        address: req.body.ticketPriority,
+        name: req.body.name,
+        address: req.body.address,
         jobsPosted: []
     }
 

@@ -5,15 +5,23 @@
 
 // define the routes - REST endpoints for user registration
 const companyController = require("../controllers/companies.controller")
+const {auth} = require("../middlewares/");
 
 module.exports = (app)=>{
     
-    app.post("/jobhunter/ap/v1/companies", companyController.addCompany);
+    // CREATE CALL
+    app.post("/jobhunter/ap/v1/companies", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.addCompany);
 
-    app.put("/jobhunter/ap/v1/companies/{id}", companyController.updateCompany);
+    // UPDATE CALL
+    app.put("/jobhunter/ap/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.updateCompany);
 
-    app.delete("/jobhunter/ap/v1/companies/{id}", companyController.deleteCompany);
-    app.get("/jobhunter/ap/v1/companies", companyController.getAllCompanies);
-    app.get("/jobhunter/ap/v1/companies/{id}", companyController.getOneCompany);
+    // DELETE CALL
+    app.delete("/jobhunter/ap/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.deleteCompany);
+    
+    // GET ALL COMPANIES
+    app.get("/jobhunter/ap/v1/companies", [auth.verifyToken], companyController.getAllCompanies);
+    
+    // GET SINGLE COMPANY
+    app.get("/jobhunter/ap/v1/companies/:id", [auth.verifyToken], companyController.getOneCompany);
 
 }
