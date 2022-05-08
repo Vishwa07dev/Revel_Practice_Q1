@@ -35,7 +35,13 @@ const companySchema = new mongoose.Schema({
     jobsPosted: {
         type: [mongoose.SchemaTypes.ObjectId],
         ref: "Job"
-    }
+    },
+    ownerId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true,
+        ref: "User"
+    },
+    
 
 });
 
