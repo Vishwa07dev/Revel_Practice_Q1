@@ -1,7 +1,6 @@
 const User = require("../models/user.model");
 const constants = require("../utils/constants");
 const Job = require("../models/job.model");
-const User = require("../models/user.model");
 const e = require("express");
 
 /**
