@@ -23,7 +23,7 @@
  *    No edit in the job can be done by the stundents except applying to the job
  *    PUT  /jobhunters/ap/v1/jobs/{jobid}/?applyJob=true
  * 
- *  */
+ *  
  * 
  * 
  * 
