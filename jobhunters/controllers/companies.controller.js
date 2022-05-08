@@ -5,7 +5,7 @@ const Company = require("../models/company.model");
 /**
  * Create a Company - company
  *   v1 - Any one should be able to create the ticket
- */
+ */  
 
 exports.addCompany = async (req, res) => {
 
