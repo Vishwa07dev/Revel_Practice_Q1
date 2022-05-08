@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const constants = require("../utils/constants");
 const Job = require("../models/job.model");
+const Company = require("../models/company.model");
 const e = require("express");
 
 /**
@@ -15,13 +16,21 @@ exports.createJob = async (req, res) => {
     const jobObj = {
         title: req.body.title,
         description: req.body.description,
-        companyId: user._id,
+        companyId: req.body.companyId,
         students: []
     }
 
     try {
         const job = await Job.create(jobObj);
         console.log(job)
+
+        const company = await Company.findOne({
+            _id: job.companyId
+        });
+
+        company.jobsPosted.push(job._id);
+
+        await company.save();
 
         return res.status(201).send(job);
 
@@ -59,21 +68,27 @@ exports.updateJob = async (req, res) => {
 
     const user =  await User.findOne({userId : req.userId});
 
+    console.log(user, req.userId);
     if (job == null) {
         return res.status(200).send({
             message: "Job doesn't exist"
         })
     }
 
-    if(user.userType == constants.userType.student){
-        if(req.query.applyJob){
+    if(req.query.applyJob){
+        if(user.userType == constants.userType.student){
             return applyJob(req, res, job, user);
         }else{
             console.log(err.message);
-            return res.status(500).send({
-                message: "Requires ADMIN/RECRUITER Role"
+            return res.status(401).send({
+                message: "Requires STUDENT Role"
             })
         }
+    }
+    if(user.userType == constants.userType.student){
+        return res.status(401).send({
+            message: "Requires ADMIN/RECRUITER Role"
+        })
     }
 
     // Update the attributes of the saved company
