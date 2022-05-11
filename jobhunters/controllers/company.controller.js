@@ -40,9 +40,12 @@ exports.updateCompany = async (req, res) => {
     company.address = req.body.address != undefined ? req.body.address: company;
     company.verified = req.body.verified != undefined ? req.body.verified: company.verified;
 
-    const updatedCompanyDetails = company.save();
+    const updatedCompanyDetails = await company.save();
 
-    return res.status(200).send(updatedCompanyDetails);
+    return res.status(200).send({
+        message: "Successfully updated company details",
+        updatedCompanyDetails: updatedCompanyDetails
+    });
     } catch (err) {
         console.log(err);
         return res.status(500).send({
@@ -54,7 +57,7 @@ exports.updateCompany = async (req, res) => {
 
 exports.deleteCompany = async (req, res) => {
     try {
-
+        
         await Company.deleteOne({
             _id: req.params.id
         });

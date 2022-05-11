@@ -39,5 +39,5 @@ mongoose.connect(dbConfig.DB_URL, async () => {
  * Start the express server
  */
 app.listen(serverConfig.PORT, () => {
-    console.log("Application has started on the port ", serverConfig.PORT);
+    console.log("Application has started on the port", serverConfig.PORT);
 })

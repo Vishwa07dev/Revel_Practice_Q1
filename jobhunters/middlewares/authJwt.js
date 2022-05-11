@@ -47,9 +47,29 @@ isAdminOrRecruiter = async (req, res, next) => {
         });
     }
 }
+isAdmin = async (req, res, next) => {
+  
+    const user = await User.findOne({userId: req.userId});
+
+   
+    if(!user) {
+         return res.status(403).send({
+            message: "No user Found"
+        });
+    }
+    else if(user && user.userType == Constants.userTypes.admin)
+        next();
+    else {
+        return res.status(403).send({
+            message: "Requires ADMIN Role"
+        });
+    }
+}
 const authJwt = {
     verifyToken: verifyToken,
-    isAdminOrRecruiter: isAdminOrRecruiter
+    isAdminOrRecruiter: isAdminOrRecruiter,
+    isAdmin: isAdmin
+    
 };
 
 module.exports = authJwt;

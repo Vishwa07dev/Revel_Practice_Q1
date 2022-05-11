@@ -40,7 +40,6 @@ const jobSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Company"
     }   
-
 });
 
 module.exports = mongoose.model("Job", jobSchema);
