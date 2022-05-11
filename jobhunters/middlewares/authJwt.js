@@ -29,7 +29,7 @@ verifyToken = (req, res, next) => {
     });
 }
 
-isAdmin = async (req, res, next) => {
+isAdminOrRecruiter = async (req, res, next) => {
   
     const user = await User.findOne({userId: req.userId});
 
@@ -39,7 +39,7 @@ isAdmin = async (req, res, next) => {
             message: "No user Found"
         });
     }
-    else if(user && user.userType == Constants.userTypes.admin)
+    else if(user && (user.userType == Constants.userTypes.admin || user.userType == Constants.userTypes.recruiter))
         next();
     else {
         return res.status(403).send({
@@ -49,7 +49,7 @@ isAdmin = async (req, res, next) => {
 }
 const authJwt = {
     verifyToken: verifyToken,
-    isAdmin: isAdmin
+    isAdminOrRecruiter: isAdminOrRecruiter
 };
 
 module.exports = authJwt;

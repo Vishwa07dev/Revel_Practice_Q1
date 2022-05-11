@@ -31,6 +31,11 @@ exports.updateCompany = async (req, res) => {
         _id: req.params.id
     });
 
+    if(company == null) {
+        return res.status(500).send({
+            message: "Company not found, please check the is and try again."
+        })
+    }
     company.name = req.body.name != undefined ? req.body.name: company.name;
     company.address = req.body.address != undefined ? req.body.address: company;
     company.verified = req.body.verified != undefined ? req.body.verified: company.verified;

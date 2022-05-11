@@ -4,7 +4,7 @@ const {authJwt} = require("../middlewares");
 
 module.exports = (app) => {
     
-    app.post("/jobhunter/ap/v1/companies", [authJwt.verifyToken, authJwt.isAdmin], companyController.createCompany);
+    app.post("/jobhunter/ap/v1/companies", [authJwt.verifyToken, authJwt.isAdminOrRecruiter], companyController.createCompany);
 
     app.put("/jobhunter/ap/v1/companies/{id}", [authJwt.verifyToken, authJwt.isAdmin], companyController.updateCompany);
 
