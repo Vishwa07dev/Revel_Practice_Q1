@@ -63,9 +63,23 @@ isAdminOrRecruiter = async (req,res, next) =>{
     }
 }
 
+isStudent = async (req,res, next) =>{
+
+    const user = await User.findOne({userId : req.userId});
+
+    if(user && (user.userType == constants.userType.student)){
+        next();
+    }else{
+        res.status(403).send({
+            message: "Require student role"
+        })
+    }
+}
+
 
 const authJwt = {
     verifyToken : verifyToken,
-    isAdminOrRecruiter : isAdminOrRecruiter
+    isAdminOrRecruiter : isAdminOrRecruiter,
+    isStudent : isStudent
 };
 module.exports= authJwt;

@@ -9,7 +9,7 @@
  * 
  *   All the above APIs can be trigger by either ADMIN/owner of the company
  * 
- *   Search  GET /jobhunters/ap/v1/jobs
+ *   Search  GET  /jobhunters/ap/v1/jobs/{id}
  *           GET /jobhunters/ap/v1/jobs/{id}
  * 
  * 
@@ -23,7 +23,7 @@
  *    No edit in the job can be done by the stundents except applying to the job
  *    PUT  /jobhunters/ap/v1/jobs/{jobid}/?applyJob=true
  * 
- *  */
+ *  
  * 
  * 
  * 
