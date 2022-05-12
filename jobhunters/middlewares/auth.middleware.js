@@ -82,10 +82,31 @@ isStudent = async (req,res, next) =>{
     }
 }
 
+verifyApplyOrUpdateJob = async (req,res, next) =>{
+
+    const user = await User.findOne({userId : req.userId});
+
+    if(req.query.applyJob){
+        if(user.userType != constants.userType.student){
+            res.status(403).send({
+                message: "Requires STUDENT role"
+            })
+        }
+    }else{
+        if(user.userType != constants.userType.admin || user.userType != constants.userType.recruiter){
+            res.status(403).send({
+                message: "Requires ADMIN/RECRUITER Role"
+            })
+        }
+    }
+
+    next();
+}
 
 const authJwt = {
     verifyToken : verifyToken,
     isAdminOrRecruiter : isAdminOrRecruiter,
-    isStudent: isStudent
+    isStudent: isStudent,
+    verifyApplyOrUpdateJob: verifyApplyOrUpdateJob
 };
 module.exports= authJwt;

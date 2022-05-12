@@ -2,7 +2,6 @@ const User = require("../models/user.model");
 const constants = require("../utils/constants");
 const Job = require("../models/job.model");
 const Company = require("../models/company.model");
-const e = require("express");
 
 /**
  * Create a Job - job
@@ -21,12 +20,17 @@ exports.createJob = async (req, res) => {
     }
 
     try {
-        const job = await Job.create(jobObj);
-        console.log(job)
-
         const company = await Company.findOne({
             _id: job.companyId
         });
+        if(!company){
+            return res.status(200).send({
+                message: "Company Doesnt Exist"
+            })
+        }
+
+        const job = await Job.create(jobObj);
+        console.log(job)
 
         company.jobsPosted.push(job._id);
 
@@ -66,28 +70,17 @@ exports.updateJob = async (req, res) => {
         _id: req.params.id
     });
 
-    const user =  await User.findOne({userId : req.userId});
-
-    console.log(user, req.userId);
     if (job == null) {
         return res.status(200).send({
             message: "Job doesn't exist"
         })
     }
 
+    const user =  await User.findOne({userId : req.userId});
+    console.log(user, req.userId);
+
     if(req.query.applyJob){
-        if(user.userType == constants.userType.student){
-            return applyJob(req, res, job, user);
-        }else{
-            return res.status(401).send({
-                message: "Requires STUDENT Role"
-            })
-        }
-    }
-    if(user.userType == constants.userType.student){
-        return res.status(401).send({
-            message: "Requires ADMIN/RECRUITER Role"
-        })
+        return applyJob(req, res, job, user);
     }
 
     // Update the attributes of the saved company

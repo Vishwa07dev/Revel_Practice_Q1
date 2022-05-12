@@ -13,7 +13,7 @@ module.exports = (app)=>{
     app.post("/jobhunters/app/v1/jobs", [auth.verifyToken, auth.isAdminOrRecruiter], jobController.createJob);
 
     // UPDATE CALL
-    app.put("/jobhunters/app/v1/jobs/:id", [auth.verifyToken], jobController.updateJob);
+    app.put("/jobhunters/app/v1/jobs/:id", [auth.verifyToken, auth.verifyApplyOrUpdateJob], jobController.updateJob);
 
     // DELETE CALL
     app.delete("/jobhunters/app/v1/jobs/:id", [auth.verifyToken, auth.isAdminOrRecruiter], jobController.deleteJob);
