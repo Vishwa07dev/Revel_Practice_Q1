@@ -14,7 +14,7 @@
  * 
  * 
  * 1. Fork
- * 2. Pull the latest code from Vishwa main branch
+ * 2. Pull the latest code from Vishwa main
  * 3. Create a new local branch called as auth
  * 4. Make the changes to support authentication and authorization
  * 5. Push to your repo

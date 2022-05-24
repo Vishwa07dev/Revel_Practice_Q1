@@ -1,7 +1,9 @@
+
 /**
  * This file will act as the route for authentication and authorzation
  * 
  */
+
 
 // define the routes - REST endpoints for user registration
 const authController = require("../controllers/auth.controller")

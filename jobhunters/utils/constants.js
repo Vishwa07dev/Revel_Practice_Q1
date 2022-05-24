@@ -1,8 +1,8 @@
 /**
  * This contains the constants to be used everyWhere in the Code.
- */
+*/
 
- module.exports = {
+module.exports = {
     
     userTypes : {
         student : "STUDENT",

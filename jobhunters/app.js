@@ -24,11 +24,11 @@ mongoose.connect(dbConfig.DB_URL, async () => {
     await User.collection.drop();// Since this a dev setup
 
     const user = await User.create({
-        name: "Vishwa Mohan",
+        name: "Nilesh Deshmukh",
         userId: "admin",
         password: bcrypt.hashSync("Welcome1", 8),
         email: "kankvish@gmail.com",
-        userType: constant.userType.admin
+        userType: constant.userTypes.admin
     });
     console.log("admin created", user);
 

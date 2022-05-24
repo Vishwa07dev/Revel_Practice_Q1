@@ -5,23 +5,23 @@
 
 // define the routes - REST endpoints for user registration
 const companyController = require("../controllers/companies.controller")
-const {auth} = require("../middlewares/");
+const auth = require("../middlewares/auth.middleware");
 
 module.exports = (app)=>{
     
     // CREATE CALL
-    app.post("/jobhunters/app/v1/companies", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.addCompany);
+    app.post("/jobhunters/api/v1/companies", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.addCompany);
 
     // UPDATE CALL
-    app.put("/jobhunters/app/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.updateCompany);
+    app.put("/jobhunters/api/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.updateCompany);
 
     // DELETE CALL
-    app.delete("/jobhunters/app/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.deleteCompany);
+    app.delete("/jobhunters/api/v1/companies/:id", [auth.verifyToken, auth.isAdminOrRecruiter], companyController.deleteCompany);
     
     // GET ALL COMPANIES
-    app.get("/jobhunters/app/v1/companies", [auth.verifyToken], companyController.getAllCompanies);
+    app.get("/jobhunters/api/v1/companies", [auth.verifyToken], companyController.getAllCompanies);
     
     // GET SINGLE COMPANY
-    app.get("/jobhunters/app/v1/companies/:id", [auth.verifyToken], companyController.getOneCompany);
+    app.get("/jobhunters/api/v1/companies/:id", [auth.verifyToken], companyController.getOneCompany);
 
 }

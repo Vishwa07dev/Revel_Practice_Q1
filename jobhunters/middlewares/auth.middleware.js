@@ -15,21 +15,22 @@ const constants = require("../utils/constants");
  *       if correct allow, else reject 
  */
 
-verifyToken = (req,res, next) =>{
+function verifyToken (req,res, next){
     /**
      * Read the token from the header
      */
     const token = req.headers['x-access-token'];
 
-    if(!token){
+    if( !token ){
         return res.status(403).send({
             message : "No token provided"
         })
     }
 
     //If the token was provided, we need to verify it
-    jwt.verify(token,config.secret, (err, decoded)=>{
+    jwt.verify(token, config.secret, (err, decoded)=>{
         if(err){
+            console.log(err);
             return res.status(401).send({
                 message: "Unauthorized"
             });
@@ -44,17 +45,17 @@ verifyToken = (req,res, next) =>{
  * If the passed access token is of ADMIN or not
  */
 
-isAdminOrRecruiter = async (req,res, next) =>{
+ async function isAdminOrRecruiter(req,res, next){
 
     /**
-     * Fetcht user from the DB using the userId
+     * Fetch the  user from the DB using the userId
      */
     const user = await User.findOne({userId : req.userId});
 
     /**
      * Check what is the user type
      */
-    if(user && (user.userType == constants.userType.admin || user.userType == constants.userType.recruiter )){
+    if(user && (user.userType == constants.userTypes.admin || user.userType == constants.userTypes.recruiter )){
         next();
     }else{
         res.status(403).send({
@@ -64,8 +65,5 @@ isAdminOrRecruiter = async (req,res, next) =>{
 }
 
 
-const authJwt = {
-    verifyToken : verifyToken,
-    isAdminOrRecruiter : isAdminOrRecruiter
-};
-module.exports= authJwt;
+
+module.exports= { verifyToken , isAdminOrRecruiter };

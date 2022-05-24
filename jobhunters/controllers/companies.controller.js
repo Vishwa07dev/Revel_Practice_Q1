@@ -21,7 +21,10 @@ exports.addCompany = async (req, res) => {
         const company = await Company.create(companyObj);
         console.log(company)
 
-        return res.status(201).send(company);
+        return res.status(201).send({
+            msg : "Company Added Successfully !",
+            company : company
+        });
 
     } catch (err) {
         console.log(err.message);
